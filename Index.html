@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Assignment Front Page Maker</title>
+
+<style>
+body{
+    margin:0;
+    font-family:"Times New Roman", serif;
+    background:#f0f0f0;
+}
+
+/* -------- NAVBAR -------- */
+nav{
+    background:#1e3799;
+    color:white;
+    padding:12px;
+    text-align:center;
+}
+
+nav button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:16px;
+    margin:0 10px;
+    <nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('about')">About</button>
+<button onclick="show('assignment')">Assignment</button>
+<button onclick="toggleDark()">🌙 Dark Mode</button>
+</nav>
+}
+
+/* -------- SECTIONS -------- */
+.section{
+    display:none;
+    padding:20px;
+}
+
+.active{
+    display:block;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+}
+
+/* -------- FORM -------- */
+input, select{
+    width:100%;
+    padding:10px;
+    margin:6px 0;
+    font-size:16px;
+}
+
+button.main{
+    width:100%;
+    padding:12px;
+    font-size:18px;
+    background:#1e3799;
+    color:white;
+    border:none;
+    border-radius:4px;
+}
+
+/* -------- A4 PAGE -------- */
+#page{
+    display:none;
+    width:210mm;
+    height:297mm;
+    background:white;
+    padding:25mm;
+    box-sizing:border-box;
+}
+
+/* -------- DESIGN -------- */
+.logo{
+    text-align:center;
+}
+
+.logo img{
+    width:120px;
+}
+
+.center{
+    text-align:center;
+}
+
+.details{
+    font-size:18px;
+    line-height:1.9;
+}
+
+/* -------- PRINT -------- */
+@page{
+    size:A4;
+    margin:0;
+}
+
+@media print{
+    body *{
+        visibility:hidden;
+    }
+    #page, #page *{
+        visibility:visible;
+    }
+    #page{
+        position:absolute;
+        left:0;
+        top:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- -------- NAVBAR -------- -->
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('about')">About</button>
+<button onclick="show('assignment')">Assignment</button>
+</nav>
+
+<!-- -------- HOME -------- -->
+<div id="home" class="section active">
+<div class="container">
+<h2>Welcome to the Assignment Front Page Maker</h2>
+<p>
+This website is designed to help students create a neat, professional, and properly formatted assignment front page in just a few simple steps.
+It eliminates the need for complex software and ensures that your assignment meets academic presentation standards.
+With this tool, you can generate an A4-size assignment front page, add your institution logo, include all required academic details, and print or save it as a PDF — directly from your mobile or computer.
+</p>
+<p>
+✔ Mobile friendly  
+✔ A4 print perfect  
+✔ Logo supported  
+✔ Free to use  
+</p>
+</div>
+</div>
+
+<!-- -------- ABOUT -------- -->
+<div id="about" class="section">
+<div class="container">
+<h2>About This Website</h2>
+<p>
+This website is made for:
+School students preparing handwritten or printed assignments
+College students submitting practicals, projects, or internal assessments
+University students preparing assignments, reports, or coursework
+It is especially useful for students who:
+Do not have access to MS Word or a computer
+Want a quick and professional front page
+Prefer a mobile-friendly solution.
+</p>
+<p>
+You can:
+<ul>
+<li>Add institution logo</li>
+<li>Enter year & semester</li>
+<li>Auto date generation</li>
+<li>Print directly in A4 size</li>
+</ul>
+</p>
+</div>
+</div>
+
+<!-- -------- ASSIGNMENT -------- -->
+<div id="assignment" class="section">
+<div class="container">
+
+<h2>Assignment Front Page Maker</h2>
+
+<input type="file" accept="image/*" onchange="loadLogo(event)">
+<input id="institution" placeholder="School / College / University Name">
+<input id="student" placeholder="Student Name">
+<input id="roll" placeholder="Roll / Registration No">
+<input id="subject" placeholder="Subject Name">
+<input id="teacher" placeholder="Teacher Name">
+<input id="year" placeholder="Academic Year (e.g. 2024–2025)">
+<input id="semester" placeholder="Semester (e.g. 1st / 2nd)">
+
+<select id="level">
+<option>School</option>
+<option>College</option>
+<option>University</option>
+</select>
+
+<button class="main" onclick="generate()">Generate Front Page</button>
+</div>
+
+<!-- -------- A4 PAGE -------- -->
+<div id="page">
+
+<div class="logo">
+<img id="logo">
+</div>
+
+<h2 class="center" id="inst"></h2>
+<h3 class="center" id="lvl"></h3>
+
+<br><br>
+<h1 class="center">ASSIGNMENT</h1>
+<br><br>
+
+<div class="details">
+<p><b>Student Name :</b> <span id="nm"></span></p>
+<p><b>Roll No :</b> <span id="rl"></span></p>
+<p><b>Subject :</b> <span id="sub"></span></p>
+<p><b>Semester :</b> <span id="sem"></span></p>
+<p><b>Academic Year :</b> <span id="yr"></span></p>
+<p><b>Submitted To :</b> <span id="tc"></span></p>
+</div>
+
+<br><br>
+<p class="center"><b>Date :</b> <span id="dt"></span></p>
+
+</div>
+
+<div class="container">
+<button class="main" onclick="window.print()">Print / Save as PDF</button>
+</div>
+</div>
+
+<script>
+function show(id){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+function generate(){
+    page.style.display="block";
+
+    inst.innerText = institution.value;
+    nm.innerText = student.value;
+    rl.innerText = roll.value;
+    sub.innerText = subject.value;
+    tc.innerText = teacher.value;
+    lvl.innerText = level.value;
+    yr.innerText = year.value;
+    sem.innerText = semester.value;
+
+    dt.innerText = new Date().toLocaleDateString();
+}
+
+function loadLogo(e){
+    logo.src = URL.createObjectURL(e.target.files[0]);
+}
+</script>
+
+</body>
+  </html>
