@@ -1,0 +1,185 @@
+<style>
+   <!--/* ===== GLOBAL ===== */
+body{
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:#f4f6f9;
+    color:#333;
+    transition:background 0.4s, color 0.4s;
+}
+
+/* ===== DARK MODE ===== */
+body.dark{
+    background:#121212;
+    color:#e0e0e0;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+    background:linear-gradient(90deg,#0a3d62,#1e90ff);
+    padding:14px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.25);
+}
+
+nav button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:16px;
+    margin:0 14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:transform 0.2s, opacity 0.2s;
+}
+
+nav button:hover{
+    transform:scale(1.1);
+    opacity:0.9;
+}
+
+/* ===== SECTIONS ===== */
+.section{
+    display:none;
+    padding:30px 10px;
+    animation:fadeUp 0.6s ease;
+}
+
+.active{
+    display:block;
+}
+
+/* ===== CARD CONTAINER ===== */
+.container{
+    max-width:780px;
+    margin:auto;
+    background:white;
+    padding:28px;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    transition:background 0.4s;
+}
+
+body.dark .container{
+    background:#1e1e1e;
+}
+
+/* ===== HEADINGS ===== */
+h1,h2,h3{
+    color:#0a3d62;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3{
+    color:#4dabf7;
+}
+
+/* ===== TEXT ===== */
+p,li{
+    font-size:16px;
+    line-height:1.8;
+}
+
+/* ===== FORM ===== */
+input,select{
+    width:100%;
+    padding:13px;
+    margin:10px 0;
+    font-size:16px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    transition:border 0.3s, box-shadow 0.3s;
+}
+
+input:focus,select:focus{
+    border-color:#1e90ff;
+    box-shadow:0 0 6px rgba(30,144,255,0.4);
+    outline:none;
+}
+
+body.dark input,
+body.dark select{
+    background:#2a2a2a;
+    color:#fff;
+    border:1px solid #444;
+}
+
+/* ===== BUTTON ===== */
+button.main{
+    width:100%;
+    background:linear-gradient(90deg,#1e90ff,#0a3d62);
+    color:white;
+    padding:15px;
+    font-size:18px;
+    font-weight:700;
+    border:none;
+    border-radius:8px;
+    margin-top:15px;
+    cursor:pointer;
+    transition:transform 0.2s, box-shadow 0.2s;
+}
+
+button.main:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 14px rgba(0,0,0,0.3);
+}
+
+/* ===== A4 PAGE ===== */
+#page{
+    display:none;
+    width:210mm;
+    height:297mm;
+    background:white;
+    padding:25mm;
+    box-sizing:border-box;
+}
+
+/* ===== LOGO ===== */
+.logo{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.logo img{
+    width:120px;
+}
+
+/* ===== DETAILS ===== */
+.details{
+    font-size:18px;
+    line-height:1.9;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ===== PRINT ===== */
+@page{
+    size:A4;
+    margin:0;
+}
+
+@media print{
+    body *{
+        visibility:hidden;
+    }
+    #page,#page *{
+        visibility:visible;
+    }
+    #page{
+        position:absolute;
+        left:0;
+        top:0;
+    }
+}-->
+</style>
